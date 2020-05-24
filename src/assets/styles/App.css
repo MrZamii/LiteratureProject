@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
+.App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-weight: bold;
+}
+.Home {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0px 50px;
+}
+.leftContent {
+  text-align: center;
+}
+.leftContent p {
+  font-size: 26px;
+}
+.leftContent button {
+  padding: 15px;
+  margin: 30px;
+  border: none;
+  font-weight: bold;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 15px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  transition-timing-function: ease-in-out;
+}
+.leftContent button:hover {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transform: scale(1.1);
+}
+#goFiles {
+  background-color: #8ec5fc;
+}
+#upLoadFile {
+  background-color: #ff99ac;
+}
+#logIn {
+  background-color: #ff5acd;
+}
+.RightContent img {
+  margin-top: 30px;
+  width: 350px;
+}
+
+@media screen and (max-width: 768px) {
+  .RightContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .RightContent img {
+    width: 300px;
+  }
+}
