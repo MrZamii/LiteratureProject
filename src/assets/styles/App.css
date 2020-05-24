@@ -3,6 +3,8 @@
   font-family: 'Poppins', sans-serif;
 }
 .App {
+  margin: 0;
+
   width: 100%;
   display: flex;
   justify-content: center;
@@ -16,6 +18,7 @@ h1 {
   display: flex;
   align-items: center;
   width: 100%;
+  margin: 0;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 0px 50px;
@@ -58,12 +61,17 @@ h1 {
 }
 
 @media screen and (max-width: 768px) {
+  .Home {
+    padding: 0 !important;
+  }
+
   .RightContent {
+    width: 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .RightContent img {
-    width: 300px;
+    width: 200px;
   }
 }
