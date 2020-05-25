@@ -1,7 +1,7 @@
-import React, { createContext } from 'react';
+import React, { createContext, lazy, Suspense } from 'react';
 import { firebase } from '../../firebase.config';
 import { default as firebaseOriginal } from 'firebase';
-
+const Loader = lazy(() => import('../Loader'));
 const Context = createContext({
   isLoggedIn: null,
   isLoading: false,
@@ -10,9 +10,7 @@ const Context = createContext({
     image: '',
     email: '',
   },
-  signInWithGoogle() {
-    console.log(1);
-  },
+  signInWithGoogle() {},
 });
 class Provider extends React.Component {
   providers = {
@@ -64,7 +62,11 @@ class Provider extends React.Component {
     }
   }
   render() {
-    const { signInWithGoogle, signOut } = this;
+    const {
+      signInWithGoogle,
+      signOut,
+      state: { isLoggedIn, isLoading },
+    } = this;
     const { children } = this.props;
     const store = {
       ...this.state,
@@ -72,7 +74,17 @@ class Provider extends React.Component {
       signOut,
     };
     console.log(store);
-    return <Context.Provider value={store}>{children}</Context.Provider>;
+    return (
+      <Context.Provider value={store}>
+        {isLoggedIn === null || isLoading ? (
+          <Suspense fallback={<></>}>
+            <Loader isLoading={true} />
+          </Suspense>
+        ) : (
+          children
+        )}
+      </Context.Provider>
+    );
   }
 }
 

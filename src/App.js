@@ -1,36 +1,11 @@
-import React, { Component, useContext } from 'react';
-import HomeImg from './assets/images/BooksImg.svg';
-import OpenFile from './components/OpenFile';
+import React from 'react';
 import './assets/styles/App.css';
-import {
-  Provider as AuthProvider,
-  Context,
-} from './components/contexts/AuthContext';
+import { Provider as AuthProvider } from './components/contexts/AuthContext';
+import Home from './screens/Home';
 const App = () => {
   return (
     <AuthProvider>
-      <Context.Consumer>
-        {({ signInWithGoogle }) => (
-          <div className="App">
-            <div className="Home">
-              <div className="leftContent">
-                <h1>Comparte los archivos de tus clases</h1>
-                <p>El conocimiento deber ser libre</p>
-                <div className="buttons">
-                  <button id="logIn" onClick={signInWithGoogle}>
-                    Iniciar Sesión
-                  </button>
-                  <OpenFile />
-                  <button id="goFiles">Ver archivos</button>
-                </div>
-              </div>
-              <div className="RightContent">
-                <img src={HomeImg} alt="Icon" />
-              </div>
-            </div>
-          </div>
-        )}
-      </Context.Consumer>
+      <Home />
     </AuthProvider>
   );
 };
