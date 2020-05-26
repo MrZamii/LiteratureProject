@@ -20,6 +20,7 @@ class Provider extends React.Component {
     super(props);
     this.signInWithGoogle = this.signInWithGoogle.bind(this);
     this.signOut = this.signOut.bind(this);
+    this.setLoading = this.setLoading.bind(this);
   }
   state = {
     isLoggedIn: null,
@@ -29,7 +30,12 @@ class Provider extends React.Component {
       image: '',
       email: '',
     },
+    listener: null,
   };
+  setLoading(value) {
+    this.setState({ isLoading: value });
+  }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged(usr =>
       this.setState({
@@ -65,6 +71,7 @@ class Provider extends React.Component {
     const {
       signInWithGoogle,
       signOut,
+      setLoading,
       state: { isLoggedIn, isLoading },
     } = this;
     const { children } = this.props;
@@ -72,8 +79,8 @@ class Provider extends React.Component {
       ...this.state,
       signInWithGoogle,
       signOut,
+      setLoading,
     };
-    console.log(store);
     return (
       <Context.Provider value={store}>
         {isLoggedIn === null || isLoading ? (
